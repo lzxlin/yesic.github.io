@@ -1,31 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[[arxiv 2018]Hierarchical Attention-Based Recurrent Highway Networks for Time Series Prediction]]></title>
-    <url>%2F2018%2F06%2F09%2Farxiv-2018-Hierarchical-Attention-Based-Recurrent-Highway-Networks-for-Time-Series-Prediction%2F</url>
-    <content type="text"><![CDATA[论文提出了一种可以端到端学习的深度学习模型，Hierarchical Attention-Based Recurrent Highway Networks(HARNN)，可以将外部序列的时空特征提取和目标序列的时空动态建模结合到一个简单的框架。 本论文模型借鉴：A Dual-Stage Attention-Based Recurrent Neural Network for Time Series Prediction 模型贡献 利用卷积网络学习外部输入（x）中变量之间的空间特征。接着利用RHN（recurrent highway network）在不同层构建不同的语义，建模时序动态。 提出层次化注意力机制。 在获得高准确率的同时，可以捕获时间序列中的突然振荡或者变动。 任务时间序列预测，给定1~T-1时刻的目标序列以及1~T-1时刻的外部序列，预测T时刻的目标值。 模型结构encoder和decoder均使用多层RHN，在encoder使用卷积网络提取外部序列的时空特征，在decoder使用层次化注意力机制对时序依赖动态建模。 encoder 将外部输入$(\mathbf{x_1,x_2,…,x_{T-1}})$通过几层卷积、池化操作后输给一个全连接层，得到一个特征向量 $(\mathbf{w_1,w_2,…,w_{T-1}})$ 利用RHN对encoder-1中的特征向量进行时序动态建模。$\mathbf{h}_t^{[k]}$表示第k层第t时刻的隐藏层状态 decoder 多层注意力机制：在t时刻，对encoder每一层的1~T-1时刻的隐藏层状态做attention。其中$\mathbf{s_{t-1}}=\mathbf{s}_{t-1}^{[k]}$ ，t-1时刻decoder第k层隐藏层状态。 则第k层第t时刻的子上下文$\mathbf{d}_t^{[k]}$为 将t时刻所有层的子上下文拼接，得到t时刻的上下文$\mathbf{d}_t$： 更新decoder输入$\mathbf{y}_t$为$\mathbf{\tilde{y}_t}$： 解码器RHN第k层隐藏层状态$\mathbf{s}_{t}^{[k]}$： 第T时刻预测值$\mathbf{\hat{y}_T}$： 实验作者在三个数据集上和ARIMA，LSTM，GRU，DA-RNN模型比较，均获得最好的结果。]]></content>
+    <title><![CDATA[[NIPS 2017]Learning Hierarchical Information Flow with Recurrent Neural Modules]]></title>
+    <url>%2F2018%2F06%2F10%2FNIPS-2017-Learning-Hierarchical-Information-Flow-with-Recurrent-Neural-Modules%2F</url>
+    <content type="text"><![CDATA[论文受到新脑皮质（neocortical）通信方式的启发，提出了ThalNet。新脑皮质通信方式有两种，一种是直连，另一种是通过丘脑（thalamus）。论文受到第二种通信方式的启发，构建多个循环神经模块，将所有模块的特征发送到一个路由中心，使得模块在多个时间步能够共享特征。模型展示了模块对输入数据的链式处理，学习了层次化的路由信息，并且模型包含了前馈神经网络、跳跃连接、反馈连接等结构。 模型结构 论文构建的模型包括四个模块，模块$f^1$接受input， $f^2$，$f^3$为侧模块，$f^4$负责输出，每个模块$f$可以是全连接层、GRU、LSTM等。对于每一时刻t，每个模块将其特征$\phi_t$发给路由中心 $\Phi$，其中每个模块特征由上下文$c_t$和一个可以选择的输入 $x_t$决定。对于下一时刻的上下文 $c_{t+1}$，每个模块通过阅读机制（read mechanism）选择性地读取路由中心$\Phi$的特征。对于每个模块的特征计算，上下文计算，路由中心，模型输出式子见下图。 阅读机制包括两种：静态阅读，动态阅读。静态阅读只取决于 $\Phi$，即$r^i(\Phi)$，而动态阅读不仅取决于 $\Phi$，还取决于当前模块的特征，即 $r^i(\Phi,\phi^i)$。 文中给出了四种阅读方法，其中weight normalization、Fast softmax比较稳定，效果比较好。 实验论文在三个任务上做了实验， Sequential Permuted MNIST、Sequential CIFAR-10、Text8 Language Modeling。其中前两个是图像的延迟预测，即将图像的像素每一行看作一个时刻，在输入最后一个时刻时预测出图像的类别，第三个任务是输入每个character，预测下一个character。]]></content>
       <categories>
         <category>paper notes</category>
+        <category>NIPS</category>
+        <category>2017</category>
       </categories>
       <tags>
-        <tag>arxiv</tag>
-        <tag>2018</tag>
+        <tag>hierarchical</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法]]></title>
-    <url>%2F2018%2F06%2F09%2Fmarkdown%E8%AF%AD%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[markdown语法实例##1.标题 一级标题二级标题三级标题四级标题五级标题六级标题 ##2.列表 ####无需列表 1 2 3 A B C a b c有序列表 1 2 3 ##3.引用 这里是引用 ##4.图片与链接图片为： 链接为：baidu ##5.粗体与斜体这是粗体*这是斜体* ##6.表格 ##7.代码框 python import math println(math.pi) ##8.分割线 ##9.版权符号&copy;]]></content>
+    <title><![CDATA[[ICLR 2018]Hierarchical Representations for Efficient Architecture Search]]></title>
+    <url>%2F2018%2F06%2F10%2FICLR-2018-Hierarchical-Representations-for-Efficient-Architecture-Search%2F</url>
+    <content type="text"><![CDATA[论文结合了一种新型层次化遗传表示体系（hierarchical genetic representation scheme），可以模仿人类专家常用的模块化设计模式，支持复杂的拓扑结构。分别在CIFAR-10和ImageNet上获得了top-1错误率为3.6%和20.3%。 在这项工作中，作者通过强加一个层次化的网络来限制搜索空间结构，允许每层是一些灵活的网络拓扑结构（有向无环图）。底层是一些基本操作，例如卷积，池化等，更高层的计算图，或者modif，是由低层modif作为它们的构建块来组成，最高层的modif通过堆叠形成最终的网络结构。如下图所示。 作者通过进化搜索或者随机搜索来发现层次化结构。基于遗传算法，作者定义了一些变异（mutation），每次选择某一层的某个motif的某条边发生变异，这可以使得modif的结构发生改变（删除，添加，修改），将验证集的准确率作为fitness。 在实验中，提出的搜索框架只学习cell的结构，而不是整个模型。原因是这样能够快速计算fitness，然后可以将对应的genotype转移到大的模型，也就是用更少的cell计算fitness，更多的cell评估模型。下图是使用框架搜索优化过的cell构建的图像分类模型。]]></content>
       <categories>
-        <category>tutorials</category>
+        <category>paper notes</category>
+        <category>ICLR</category>
+        <category>2018</category>
       </categories>
       <tags>
-        <tag>markdown</tag>
+        <tag>hierarchical</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[IJCAI 2018]A Hierarchical End-to-End Model for Jointly Improving Text Summarization and Sentiment Classification]]></title>
+    <url>%2F2018%2F06%2F10%2FIJCAI-2018-A-Hierarchical-End-to-End-Model-for-Jointly-Improving-Text-Summarization-and-Sentiment-Classification%2F</url>
+    <content type="text"><![CDATA[论文提出了一种层次化端到端模型，整合了文本摘要生成和情感分类任务 。 模型借鉴来源：Hierarchical Attention Networks for Document Classification 任务给定样本$(x^i,y^i,l^i)$，包含了文本，摘要，情感标签，同时进行摘要生成和情感分类。其中$L_i$为文本的单词数， $M_i$为摘要的单词数。 模型结构模型包括三部分：text encoder，summary decoder，sentiment classifier text encoder 使用双向LSTM作为encoder，产生上下文信息$h={h_1,h_2,…,h_L}$ summary decoderSummary decoder包括三部分：单向LSTM，multi-view attention，word generator 利用单向LSTM产生decoder的隐藏层输出$s_t$ 利用multi-view attention生成摘要向量$\mathbf{v}^{(c)}$和情感向量$\mathbf{v}^{(t)}$，multi-view attention其实就是两个独立的global attention。摘要向量$\mathbf{v}^{(c)}$生成如下： 根据摘要向量 $\mathbf{v}^{(c)}$，利用生成摘要中的每个词。 sentiment classifier 将所有时间步的情感向量 $\mathbf{v}^{(t)}$收集起来 为了获得原文本的上下文信息，使用highway机制，将上下文信息h作为分类器输入的一部分，r为情感分类的输入向量 实验作者在亚马逊在线评论数据集上做了实验，在和其他模型的对比上均获得了最好的结果。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>IJCAI</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>encoder decoder</tag>
+        <tag>text summarization</tag>
+        <tag>sentiment classification</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[NAACL 2016]Hierarchical Attention Networks for Document Classification]]></title>
+    <url>%2F2018%2F06%2F10%2FNAACL-2016-Hierarchical-Attention-Networks-for-Document-Classification%2F</url>
+    <content type="text"><![CDATA[论文提出了一种层次化的注意力网络用于文本分类，模型有两个特点：1）它有一个层次化的结构，反映了文本的层次化结构（由词组成句；由句组成文本）；2）它有两个level的注意力机制，分别是word-level和sentence-level。 模型结构模型由四部分组成：word encoder，word attention，sentence encoder，sentence attention word encoder 对每个词进行word embedding，在通过双向GRU提取隐藏层状态，将两个方向的隐藏层状态拼接， $w_{it}$为文本第i个句子的第t个词 。 word attention 对每个句子的所有词做attention，然后计算每个句子向量$s_i$： sentence encoder 和word encoder方式一样，利用双向GRU提取每个句子向量$s_i$的信息，然后将两个方向的隐藏层状态拼接 sentence attention和word attention方式一样，对文本的每个句子做attention，然后计算文本向量v，将v用softmax分类。 实验作者在6个大规模文本分类数据集上做了实验，和众多SVM，CNN，LSTM比较均获得了最好的结果。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>NAACL</category>
+        <category>2016</category>
+      </categories>
+      <tags>
+        <tag>hierarchical</tag>
+        <tag>encoder decoder</tag>
+        <tag>attention</tag>
+        <tag>document classification</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[arxiv 2018]Hierarchical Attention-Based Recurrent Highway Networks for Time Series Prediction]]></title>
+    <url>%2F2018%2F06%2F09%2Farxiv-2018-Hierarchical-Attention-Based-Recurrent-Highway-Networks-for-Time-Series-Prediction%2F</url>
+    <content type="text"><![CDATA[论文提出了一种可以端到端学习的深度学习模型，Hierarchical Attention-Based Recurrent Highway Networks(HARNN)，可以将外部序列的时空特征提取和目标序列的时空动态建模结合到一个简单的框架。 论文模型借鉴来源：A Dual-Stage Attention-Based Recurrent Neural Network for Time Series Prediction 模型贡献 利用卷积网络学习外部输入（x）中变量之间的空间特征。接着利用RHN（recurrent highway network）在不同层构建不同的语义，建模时序动态。 提出层次化注意力机制。 在获得高准确率的同时，可以捕获时间序列中的突然振荡或者变动。 任务时间序列预测，给定1~T-1时刻的目标序列以及1~T-1时刻的外部序列，预测T时刻的目标值。 模型结构encoder和decoder均使用多层RHN，在encoder使用卷积网络提取外部序列的时空特征，在decoder使用层次化注意力机制对时序依赖动态建模。 encoder 将外部输入$(\mathbf{x_1,x_2,…,x_{T-1}})$通过几层卷积、池化操作后输给一个全连接层，得到一个特征向量 $(\mathbf{w_1,w_2,…,w_{T-1}})$ 利用RHN对encoder-1中的特征向量进行时序动态建模。$\mathbf{h}_t^{[k]}$表示第k层第t时刻的隐藏层状态 decoder 多层注意力机制：在t时刻，对encoder每一层的1~T-1时刻的隐藏层状态做attention。其中$\mathbf{s_{t-1}}=\mathbf{s}_{t-1}^{[k]}$ ，t-1时刻decoder第k层隐藏层状态。 则第k层第t时刻的子上下文$\mathbf{d}_t^{[k]}$为 将t时刻所有层的子上下文拼接，得到t时刻的上下文$\mathbf{d}_t$： 更新decoder输入$\mathbf{y}_t$为$\mathbf{\tilde{y}_t}$： 解码器RHN第k层隐藏层状态$\mathbf{s}_{t}^{[k]}$： 第T时刻预测值$\mathbf{\hat{y}_T}$： 实验作者在三个数据集上和ARIMA，LSTM，GRU，DA-RNN模型比较，均获得最好的结果。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>arxiv</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>hierarchical</tag>
+        <tag>time series prediction</tag>
+        <tag>encoder decoder</tag>
+        <tag>attention</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[IJCAI 2017]A Dual-Stage Attention-Based Recurrent Neural Network for Time Series Prediction]]></title>
+    <url>%2F2018%2F06%2F09%2FIJCAI-2017-A-Dual-Stage-Attention-Based-Recurrent-Neural-Network-for-Time-Series-Prediction%2F</url>
+    <content type="text"><![CDATA[论文提出了基于注意力机制的两阶段循环神经网络（DA-RNN），在第一阶段（encoder），引入input attention mechanism对每一时刻的外部输入自适应性地提取相关性；在第二阶段（decoder），引入temporal attention mechanism捕获encoder的长期时序依赖信息。 任务时间序列预测，给定1~T-1时刻的目标序列以及1~T-1时刻的外部序列，预测T时刻的目标值。 模型结构 encoder 使用LSTM作为encoder和decoder，其中状态更新如下 ： 引入input attention mechanism：对每一时刻$\mathbf{X_t}$的n维变量使用attention 使用$\alpha_t^k$对$\mathbf{X_t}$加权求和，更新$\mathbf{X_t}$： 使用$\tilde{X_t}$更新1中的状态方程： decoder 引入temporal attention mechanism：在decoder的第t时刻，对encoder所有隐藏层状态做attention 计算t时刻的上下文向量$\mathbf{c_t}$： 利用$\mathbf{c_t}$更新目标序列的输入值$\mathbf{y_{t-1}}$为$\mathbf{\tilde{y}_{t-1}}$： 更新第t时刻decoder的隐藏层状态$\mathbf{d_t}$： 其中$f_2$的更新状态方程如encoder-1： 则第t时刻的预测值$\mathbf{\hat{T}_t}$为： 实验作者在两个数据集上和ARIMA，NARX RNN，Encoder-Decoder，Attention RNN模型进行了比较，均获得了最好的结果。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>IJCAI</category>
+        <category>2017</category>
+      </categories>
+      <tags>
+        <tag>hierarchical</tag>
+        <tag>time series prediction</tag>
+        <tag>encoder decoder</tag>
+        <tag>attention</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F06%2F08%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
   </entry>
 </search>
