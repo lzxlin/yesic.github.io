@@ -51,8 +51,8 @@
         <category>2016</category>
       </categories>
       <tags>
-        <tag>hierarchical</tag>
         <tag>encoder decoder</tag>
+        <tag>hierarchical</tag>
         <tag>attention</tag>
         <tag>document classification</tag>
       </tags>
@@ -67,9 +67,9 @@
         <category>2018</category>
       </categories>
       <tags>
-        <tag>hierarchical</tag>
         <tag>time series prediction</tag>
         <tag>encoder decoder</tag>
+        <tag>hierarchical</tag>
         <tag>attention</tag>
       </tags>
   </entry>
@@ -83,9 +83,9 @@
         <category>2017</category>
       </categories>
       <tags>
-        <tag>hierarchical</tag>
         <tag>time series prediction</tag>
         <tag>encoder decoder</tag>
+        <tag>hierarchical</tag>
         <tag>attention</tag>
       </tags>
   </entry>

@@ -75,9 +75,9 @@
     <link href="http://yoursite.com/2018/06/10/IJCAI-2018-A-Hierarchical-End-to-End-Model-for-Jointly-Improving-Text-Summarization-and-Sentiment-Classification/"/>
     <id>http://yoursite.com/2018/06/10/IJCAI-2018-A-Hierarchical-End-to-End-Model-for-Jointly-Improving-Text-Summarization-and-Sentiment-Classification/</id>
     <published>2018-06-09T16:44:10.000Z</published>
-    <updated>2018-06-09T17:20:35.882Z</updated>
+    <updated>2018-06-09T17:59:53.782Z</updated>
     
-    <content type="html"><![CDATA[<blockquote class="blockquote-center"><p>论文提出了一种层次化端到端模型，整合了文本摘要生成和情感分类任务 。</p></blockquote><a id="more"></a><blockquote><p>模型借鉴来源：<a href="https://yesic.github.io/2018/06/09/NAACL-2016-Hierarchical-Attention-Networks-for-Document-Classification/" target="_blank" rel="noopener">Hierarchical Attention Networks for Document Classification</a></p></blockquote><hr><h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><p>给定样本$(x^i,y^i,l^i)$，包含了文本，摘要，情感标签，同时进行摘要生成和情感分类。其中$L_i$为文本的单词数， $M_i$为摘要的单词数。</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-1.jpg?raw=true" alt=""><br><br></div><h4 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h4><p>模型包括三部分：text encoder，summary decoder，sentiment classifier</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-2.jpg?raw=true" alt=""><br><br></div><h5 id="text-encoder"><a href="#text-encoder" class="headerlink" title="text encoder"></a>text encoder</h5><ol><li>使用双向LSTM作为encoder，产生上下文信息$h={h_1,h_2,…,h_L}$</li></ol><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-3.jpg?raw=true" alt=""></div><h5 id="summary-decoder"><a href="#summary-decoder" class="headerlink" title="summary decoder"></a>summary decoder</h5><p>Summary decoder包括三部分：单向LSTM，multi-view attention，word generator</p><ol><li><p>利用单向LSTM产生decoder的隐藏层输出$s_t$</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-4.jpg?raw=true" alt=""></div></li><li><p>利用multi-view attention生成摘要向量$\mathbf{v}^{(c)}$和情感向量$\mathbf{v}^{(t)}$，multi-view attention其实就是两个独立的global attention。摘要向量$\mathbf{v}^{(c)}$生成如下：</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-5.jpg?raw=true" alt=""></div></li><li><p>根据摘要向量 $\mathbf{v}^{(c)}$，利用生成摘要中的每个词。 </p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-6.jpg?raw=true" alt=""></div></li></ol><h5 id="sentiment-classifier"><a href="#sentiment-classifier" class="headerlink" title="sentiment classifier"></a>sentiment classifier</h5><ol><li><p>将所有时间步的情感向量 $\mathbf{v}^{(t)}$收集起来</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-7.jpg?raw=true" alt=""></div></li><li><p>为了获得原文本的上下文信息，使用highway机制，将上下文信息h作为分类器输入的一部分，r为情感分类的输入向量</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-8.jpg?raw=true" alt=""></div></li></ol><h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>作者在亚马逊在线评论数据集上做了实验，在和其他模型的对比上均获得了最好的结果。</p>]]></content>
+    <content type="html"><![CDATA[<blockquote class="blockquote-center"><p>论文提出了一种层次化端到端模型，整合了文本摘要生成和情感分类任务 。</p></blockquote><a id="more"></a><blockquote><p>模型借鉴来源：<a href="https://yesic.github.io/2018/06/10/NAACL-2016-Hierarchical-Attention-Networks-for-Document-Classification/" target="_blank" rel="noopener">Hierarchical Attention Networks for Document Classification</a></p></blockquote><hr><h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><p>给定样本$(x^i,y^i,l^i)$，包含了文本，摘要，情感标签，同时进行摘要生成和情感分类。其中$L_i$为文本的单词数， $M_i$为摘要的单词数。</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-1.jpg?raw=true" alt=""><br><br></div><h4 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h4><p>模型包括三部分：text encoder，summary decoder，sentiment classifier</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-2.jpg?raw=true" alt=""><br><br></div><h5 id="text-encoder"><a href="#text-encoder" class="headerlink" title="text encoder"></a>text encoder</h5><ol><li>使用双向LSTM作为encoder，产生上下文信息$h={h_1,h_2,…,h_L}$</li></ol><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-3.jpg?raw=true" alt=""></div><h5 id="summary-decoder"><a href="#summary-decoder" class="headerlink" title="summary decoder"></a>summary decoder</h5><p>Summary decoder包括三部分：单向LSTM，multi-view attention，word generator</p><ol><li><p>利用单向LSTM产生decoder的隐藏层输出$s_t$</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-4.jpg?raw=true" alt=""></div></li><li><p>利用multi-view attention生成摘要向量$\mathbf{v}^{(c)}$和情感向量$\mathbf{v}^{(t)}$，multi-view attention其实就是两个独立的global attention。摘要向量$\mathbf{v}^{(c)}$生成如下：</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-5.jpg?raw=true" alt=""></div></li><li><p>根据摘要向量 $\mathbf{v}^{(c)}$，利用生成摘要中的每个词。 </p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-6.jpg?raw=true" alt=""></div></li></ol><h5 id="sentiment-classifier"><a href="#sentiment-classifier" class="headerlink" title="sentiment classifier"></a>sentiment classifier</h5><ol><li><p>将所有时间步的情感向量 $\mathbf{v}^{(t)}$收集起来</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-7.jpg?raw=true" alt=""></div></li><li><p>为了获得原文本的上下文信息，使用highway机制，将上下文信息h作为分类器输入的一部分，r为情感分类的输入向量</p><div align="center"><br><br><img src="https://github.com/yesic/pic/blob/master/man/man-8.jpg?raw=true" alt=""></div></li></ol><h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>作者在亚马逊在线评论数据集上做了实验，在和其他模型的对比上均获得了最好的结果。</p>]]></content>
     
     <summary type="html">
     
@@ -124,9 +124,9 @@
       <category term="2016" scheme="http://yoursite.com/categories/paper-notes/NAACL/2016/"/>
     
     
-      <category term="hierarchical" scheme="http://yoursite.com/tags/hierarchical/"/>
-    
       <category term="encoder decoder" scheme="http://yoursite.com/tags/encoder-decoder/"/>
+    
+      <category term="hierarchical" scheme="http://yoursite.com/tags/hierarchical/"/>
     
       <category term="attention" scheme="http://yoursite.com/tags/attention/"/>
     
@@ -157,11 +157,11 @@
       <category term="2018" scheme="http://yoursite.com/categories/paper-notes/arxiv/2018/"/>
     
     
-      <category term="hierarchical" scheme="http://yoursite.com/tags/hierarchical/"/>
-    
       <category term="time series prediction" scheme="http://yoursite.com/tags/time-series-prediction/"/>
     
       <category term="encoder decoder" scheme="http://yoursite.com/tags/encoder-decoder/"/>
+    
+      <category term="hierarchical" scheme="http://yoursite.com/tags/hierarchical/"/>
     
       <category term="attention" scheme="http://yoursite.com/tags/attention/"/>
     
@@ -190,11 +190,11 @@
       <category term="2017" scheme="http://yoursite.com/categories/paper-notes/IJCAI/2017/"/>
     
     
-      <category term="hierarchical" scheme="http://yoursite.com/tags/hierarchical/"/>
-    
       <category term="time series prediction" scheme="http://yoursite.com/tags/time-series-prediction/"/>
     
       <category term="encoder decoder" scheme="http://yoursite.com/tags/encoder-decoder/"/>
+    
+      <category term="hierarchical" scheme="http://yoursite.com/tags/hierarchical/"/>
     
       <category term="attention" scheme="http://yoursite.com/tags/attention/"/>
     
