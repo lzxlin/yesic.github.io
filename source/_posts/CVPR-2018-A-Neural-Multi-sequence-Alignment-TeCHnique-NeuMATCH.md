@@ -7,6 +7,7 @@ categories:
 - paper notes
 - CVPR
 - 2018
+mathjax: true
 ---
 
 {% centerquote %}论文提出了一种端到端训练的模型，称为NeuMATCH，用于处理多个异源（即对齐的两个目标的来源不同，例如视频和文本的对齐）序列对齐的问题。
@@ -112,4 +113,3 @@ HM-1为在序列中随机插入一些不同电影的片段，但是具有相似�
 * 一对多
 
   ![mark](http://pakzslacd.bkt.clouddn.com/blog/180620/7e4FiEmA4i.png?imageslim)
-
