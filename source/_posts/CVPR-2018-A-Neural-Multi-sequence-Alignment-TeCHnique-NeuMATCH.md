@@ -52,7 +52,13 @@ mathjax: true
 
 **Sentence Encoder**   对每个词使用GloVe嵌入，在经过两层LSTM后，得到最后一层隐藏层的特征$h_t$，在经过三层全连接层得到每个句子的编码信息$s_i$。
 
-**Enc
+**Encoding Alignment and Pre-training**    文中采用了一种可选择的预训练，可以产生一个好的初始化。这里的初始化使用了[order-embedding](https://arxiv.org/abs/1511.06361) ，对于每一对ground-truth  $(V_i,S_i)$，采用一种非对称的相似度度量：
+$$
+F(v_i,s_i)=-||max(0,v_i,s_i)||^2
+$$
+相似度函数最大值为0。为每对ground-truth随机采样一些对比的clip $V'$和句子$S'$ 。最小化损失函数使得groud-truth的相似度为0，而对比样本的相似度低于一个间隔$\alpha$ 。损失函数为
+
+![mark](http://pakzslacd.bkt.clouddn.com/blog/180621/ckKaHfJHaA.png?imageslim) 
 
 ####  *The NeuMATCH Alignment Network*
 
