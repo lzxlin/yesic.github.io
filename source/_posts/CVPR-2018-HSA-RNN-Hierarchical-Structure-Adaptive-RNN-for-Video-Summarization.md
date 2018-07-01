@@ -70,7 +70,7 @@ HSA-RNN包含两层：第一层探索视频的结构，划分shot；第二层根
 
 #### *layer 2*
 
-同样利用双向LSTM处理layer 1得到的shot序列$(s_1,s_2,...,s_m)$。
+同样利用双向LSTM处理layer 1得到的shot序列$(s_1,s_2,...,s_m)​$。
 $$
 h_t^{2,f}=LSTM(s_t,h_{t-1}^{2,f})\\
 h_t^{2,b}=LSTM(s_t,h_{t+1}^{2,b})
