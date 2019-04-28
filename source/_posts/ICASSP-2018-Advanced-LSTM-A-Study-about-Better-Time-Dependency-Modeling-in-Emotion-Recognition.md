@@ -30,26 +30,24 @@ LSTM每一时刻的状态依赖于上一个时刻，这种假设会约束RNN的�
 
 依赖注意力机制学习每一个时间步的一个权重，$h_T$是过去的时间步，可以是一个固定的步长，例如3,4,5。
 
-![mark](http://pakzslacd.bkt.clouddn.com/blog/180701/aA563ghDGB.png?imageslim)
+![El9Scq.png](https://s2.ax1x.com/2019/04/28/El9Scq.png)
 
 #### *multi-task learning*
 
 文中的任务是基于语音的动作识别，并且是多任务的学习，包括动作、说话者以及说话者性别的识别
 
-![mark](http://pakzslacd.bkt.clouddn.com/blog/180701/3me4eFF2Eb.png?imageslim)
-
+[![El9PBT.png](https://s2.ax1x.com/2019/04/28/El9PBT.png)](https://imgchr.com/i/El9PBT)
 
 
 #### *advanced LSTM*
 
 * conventional LSTM
 
-  ![mark](http://pakzslacd.bkt.clouddn.com/blog/180701/5jfAmKfj4k.png?imageslim)
+![El9CuV.png](https://s2.ax1x.com/2019/04/28/El9CuV.png)
 
 * advanced LSTM
 
   注意：<u>(9)和(10)中的W是共享的</u>
 
-  ![mark](http://pakzslacd.bkt.clouddn.com/blog/180701/BlbDgH68lh.png?imageslim)
-
+![El9pj0.png](https://s2.ax1x.com/2019/04/28/El9pj0.png)
   
