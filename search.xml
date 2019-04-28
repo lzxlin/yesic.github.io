@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F04%2F28%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[[CVPR 2018]Deep Layer Aggregation]]></title>
+    <url>%2F2018%2F07%2F01%2FCVPR-2018-Deep-Layer-Aggregation%2F</url>
+    <content type="text"><![CDATA[Aggregation is a decisive aspect of architecture, and as the number of modules multiply their connectivity is made all the more important.By relating architectures for aggregating channels, scales, and resolutions we identified the need for deeper aggregation, and addressed it by iterative deep aggregation and hierarchical deep aggregation. IntroductionMore nonlinearity, greater capacity, and larger receptive fields generally improve accuracy but can be problematic for optimization and computation. To overcome these barriers, different blocks or modules have been incorporated to balance and temper these quantities, such as bottlenecks for dimensionality reduction or residual, gated, and concatenative connections for feature and gradient propagation.Networks designed according to these schemes have 100+ and even 1000+ layers. Nevertheless, further exploration is needed on how to connect these layers and modules. Layered networks from LeNet through AlexNet to ResNet stack layers and modules in sequence. Layerwise accuracy comparisons , transferability analysis , and representation visualization show that deeper layers extract more semantic and more global features, but these signs do not prove that the last layer is the ultimate representation for any task. In fact, skip connections have proven effective for classification and regression and more structured tasks. Aggregation, like depth and width, is a critical dimension of architecture. In this work, we investigate how to aggregate layers to better fuse semantic and spatial information for recognition and localization. We introduce two structures for deep layer aggregation (DLA): iterative deep aggregation (IDA) and hierarchical deep aggregation (HDA). IDA focuses on fusing resolutions and scales while HDA focuses on merging features from all modules and channels. IDA follows the base hierarchy to refine resolution and aggregate scale stage-by-stage. HDA assembles its own hierarchy of tree-structured connections that cross and merge stages to aggregate different levels of representation. task: large-scale image classification, finegrained recognition, semantic segmentation, and boundary detection Related workOur aggregation architectures are most closely related to leading approaches for fusing feature hierarchies. The key axes of fusion are semantic and spatial. Semantic fusion, or aggregating across channels and depths, improves inference of what. Spatial fusion, or aggregating across resolutions and scales, improves inference of where. Deep layer aggregation can be seen as the union of both forms of fusion. Deep Layer Aggregationiterative deep aggregation (IDA)Iterative deep aggregation follows the iterated stacking of the backbone architecture. We divide the stacked blocks of the network into stages according to feature resolution. Deeper stages are more semantic but spatially coarser. conventional method (b)是FCN、FPN、U-net的方法，从粗粒度向细粒度融合。 IDA Hierarchical Deep Aggregation(HDA)Hierarchical deep aggregation merges blocks and stages in a tree to preserve and combine feature channels. With HDA shallower and deeper layers are combined to learn richer combinations that span more of the feature hierarchy. aggregation nodes特征融合：使用$1*1$的卷积 blocks and stagesThe networks we instantiate in our experiments make use of three types of residual blocks. Basic blocks combine stacked convolutions with an identity skip connection. Bottleneck blocks regularize the convolutional stack by reducing dimensionality through a 1×1 convolution. Split blocks diversify features by grouping channels into a number of separate paths (called the cardinality of the split). Experiments ImageNet Classification Fine-grained Recognition Semantic Segmentation Boundary Detection]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>CVPR</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>hierarchical</tag>
+        <tag>aggregation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[ICASSP 2018]Advanced LSTM: A Study about Better Time Dependency Modeling in Emotion Recognition]]></title>
+    <url>%2F2018%2F07%2F01%2FICASSP-2018-Advanced-LSTM-A-Study-about-Better-Time-Dependency-Modeling-in-Emotion-Recognition%2F</url>
+    <content type="text"><![CDATA[We proposed a new type of LSTM, A-LSTM, in this paper. This was a early study of A-LSTM. We applied it in the weighted pooling RNN for emotion recognition. IntroductionLSTM每一时刻的状态依赖于上一个时刻，这种假设会约束RNN的建模容量。这篇论文，提出了一种LSTM的变体，advanced LSTM，即A-LSTM，每一时刻依赖于多个不同的时刻。 改进的方法就是利用了attention based weighted pooling layer Proposed approachattention based weighted pooling RNN依赖注意力机制学习每一个时间步的一个权重，$h_T$是过去的时间步，可以是一个固定的步长，例如3,4,5。 multi-task learning文中的任务是基于语音的动作识别，并且是多任务的学习，包括动作、说话者以及说话者性别的识别 advanced LSTM conventional LSTM advanced LSTM 注意：(9)和(10)中的W是共享的]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>ICASSP</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>emotion recognition</tag>
+        <tag>multi-task learning</tag>
+        <tag>attention</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[CVPR 2018]HSA-RNN: Hierarchical Structure-Adaptive RNN for Video Summarization]]></title>
+    <url>%2F2018%2F06%2F21%2FCVPR-2018-HSA-RNN-Hierarchical-Structure-Adaptive-RNN-for-Video-Summarization%2F</url>
+    <content type="text"><![CDATA[In this paper, we propose a Hierarchical Structure Adaptive RNN (HSA-RNN) for the video summarization task, which can adaptively exploit the video structure and generate the summary simultaneously. Introduction类似文本序列，视频序列也是一种层次化的结构，由帧（frame）组成镜头（shot），镜头组成视频（video）。 视频摘要（video summarization）可以分为三个类别，镜头（shots），帧（shots）以及物体（objects）。论文中讨论的是镜头级别的视频摘要，从视频中挑选出关键的shots，因为它更好地保留了视频内容的动态信息和时空一致性。 视频摘要可以分为两个阶段：1）镜头划分（shot segmentation）；2）挑选关键镜头（key shot selection）。 通常更多的方法关注的key shot selection，而shot segmentation一般根据帧突然变化、运动幅度变化，或者固定长度划分，但是这样的方法忽略了视频的结构。 针对先前shot segmentation方法的缺点，文中提出了一种层次化自适应的网络HSA-RNN，可以联合探索视频的结构和视频摘要。更加关注shot segmentation ApproachHSA-RNN包含两层：第一层探索视频的结构，划分shot；第二层根据第一层划分的shot生成视频摘要，即挑选出key shot。 layer 1输入所有帧的特征序列$(f_1,f_2,…,f_n)$，输出所有镜头的特征序列$(s_1,s_2,…,s_m)$。n和m分别是帧和镜头的数量。 一种简单的方法就是利用LSTM应用于整个视频，每一步通过一个输出阈值判断shot的边界，如图(a)。但是这种方法有两个缺点： 1）难以应用双向LSTM到这种结构，在检测shot边界时前后的信息都是很重要的。 2）阈值难以设定。 文中使用了滑动的双向LSTM解决这个问题，也是论文的亮点，如图(b)。 如图(b)，它就像一个固定长度的一维滤波器在帧序列上滑动。双向LSTM的长度$k$凭经验选择（文中k=240），LSTM每次滑动的长度等于检测出的镜头（detected shot）的长度。 步骤： 某一时刻双向LSTM处理的帧序列$(f_1,f_2,..,f_k)$，经过隐藏层后有$$h_t^{1,f}=LSTM(f_t,h_{t-1}^{1,f})\h_t^{1,b}=LSTM(f_t,h_{t+1}^{1,b})$$$h_t^{1,f}$和$h_t^{1,b}$是双向LSTM的隐藏层状态。将这两个状态拼接用来计算每一帧的作为shot的边界的置信度$c_t$。$$c_t=softmax(Relu(W_c[h_t^{1,f},h_t^{1,b}]+b_c))$$其中，$c_t$是一个二维向量，包含了是帧作为shot的边界的置信度与否。$$t^=max{c_1(1),c_2(1),…,c_k(1)}$$将$h_{t^}^{1,f}$作为shot的边界。滑动的LSTM下一次处理的帧序列为$(f_{t^+1},f_{t+2},…,f_{t^+k})$。 layer 2同样利用双向LSTM处理layer 1得到的shot序列$(s_1,s_2,…,s_m)​$。$$h_t^{2,f}=LSTM(s_t,h_{t-1}^{2,f})\h_t^{2,b}=LSTM(s_t,h_{t+1}^{2,b})$$将隐藏层状态和$s_t$拼接，计算每一shot作为key shot生成视频摘要的置信度。$$p_t=softmax(Relu(W_p[h_t^{2,f};h_t^{2,b};s_t]+b_p))$$损失函数： T为视频的数量，$n^{(i)}$是视频的帧数。考虑到生成的shot的长度和人为设定的有不同的间隔差异，这里的预测是frame-level的预测$\hat{p}_t^{(i)}$，通过得到的shot的预测结果分配给shot所包含的frame。$L(\cdot)$为交叉熵。 Experimentsdatasets SumMe TVSum CoSum VTW results boundary detection video summatization]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>CVPR</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>video summarization</tag>
+        <tag>hierarchical</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[CVPR 2018]Dual Skipping Networks]]></title>
+    <url>%2F2018%2F06%2F20%2FCVPR-2018-Dual-Skipping-Networks%2F</url>
+    <content type="text"><![CDATA[Inspired by the recent study on the hemispheric specialization and coarse-to-fine perception, we proposed a novel left-right asymmetric layer skippable network for coarse-to-fine object categorization. Introduction在人类的大脑上，尽管关于视觉分析的具体位置和方法还有很多的争论，但是有相当多的证据证明，视觉分析主要发生在一个默认的粗到细的序列上（coarse-to-fine sequence），如图（1）。例如，快速地给某人看图片（1）时，只能接收到非常粗的视觉刺激，只能看到砂子和雨伞，通常是低空间频率的（Low spatial frequencies）。如果给定一个较长的观察时间，可以接收到一些细的视觉感知，通常时高空间频率的（high spatial frequencies）。 最近生物研究表明，大脑的两个半球功能在处理空间频率信息（spatial frequency information）时并不是完全一样的，左半球（LH）主要处理高空间频率信息，而右半球（RH）主要处理低空间频率信息，如图（2-A，2-B）。 受到大脑结构的启发，文中提出了dual skipping network（DSN），网络有左右两个分支，这两个分支不对称，并且层可以跳跃。模型可以用一个简单的框架实现粗到细的物体分类。 尽管空间频率不能等同于识别的粒度，DSN的工作原理和大脑半球形似，取决于监督信息的粒度。 Contributions 受到最近神经科学研究的启发，提出左右分支网络结构解决粗到细的物体分类任务。 提出层跳跃机制（layer-skipping mechanism），在测试阶段可以跳跃一些层。 采用自顶向下的反馈机制，通过高层的global语义信息来指导细粒度分类。 构建一个新的数据集small-big MNIST，每个MNIST的global数字由local数字组成。 Model模型由左右两个分支组成，每个分支由shared convolutional layer，skip-dense blocks，transition layers，pooling layer和classification layer组成。 左分支负责细粒度分类，右分支负责粗粒度分类，左右分支的结构是一样的，但是右分支有“Guide”箭头指导左分支。 shared convolutional layer两个分支的共享卷积层。 Left/Right subnet两个分支都是由skip-dense blocks和transition交替堆叠而成。 skip-dense blocks结构如上图最右所示，可以看作是一个级别的视觉感知抽象，其中gating network学习当前的块信息是否流向dense layer。 transition由$1\times1$的卷积和池化操作组成，控制下一个skip-dense block的特征图数量和空间大小。 skip-dense blockskip-dense block由一系列的gating network和dense layer堆叠而成，其中每个gating network和dense layer可以看作resNet中的残差连接。 dense layer dense layer是由denseNet或者resNet组成。denseNet和resNet主要不同在于，残差连接的方式不一样，denseNet是通道拼接，resNet是按元素相加。 gating network gating network负责路径的选择。对于N维的特征输入，经过一个$N\times1$的全连接层得到一个标量输出，在通过一个阈值函数（threshold function）。 threshold function of gating network 给定一个激活值或者输入，阈值函数需要判断是否要跳过接下来的dense layer。直观上，阈值函数是一个二分类，文中采用了hard sigmoid function。文中的实验中显示hard sigmoid要比soft sigmoid效果要好，soft sigmoid就是常用的sigmoid函数。$$hard \ sigm(x)=max(0,min(kx+\frac{1}{2},1))$$斜率参数$k$ 是一个关键参数，决定dense layer的输出缩放比例，$k$初始化为1，每个epoch按照一个固定值增加。 hard sigmoid是logistic sigmoid激活函数的分段线性近似，它更易计算，使得学习计算的速度更快，尽管首次派生值为零可能导致静默神经元过慢的学习率。 阈值函数会和卷积输出的每个单元相乘，影响层的分类重要性。 Guide较快的coarse/global分支可以以自顶向下的方式，通过global上下文信息引导较慢的fine/local分支。模型中，选择粗分支的最后一个skip-dense block的输出特征，去引导细分支中最后一个transition layer。 粗分支的最后一个skip-dense block的输出特征通过双线性采样和细分支的最后一个transition layer的输入特征拼接，输入给细分支的最后一个transition layer。 ExperimentsDatasets sb-MNIST（不采用guide） CIFAR-100 CUB-200-2011 stanford cars baselines Feedback Net DenseNet ResNet results sb-MNIST result CIFAR-100]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>CVPR</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>object classification</tag>
+        <tag>layyer skipping</tag>
+        <tag>coarse-to-fine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[CVPR 2018]A Neural Multi-sequence Alignment TeCHnique (NeuMATCH)]]></title>
+    <url>%2F2018%2F06%2F19%2FCVPR-2018-A-Neural-Multi-sequence-Alignment-TeCHnique-NeuMATCH%2F</url>
+    <content type="text"><![CDATA[论文提出了一种端到端训练的模型，称为NeuMATCH，用于处理多个异源（即对齐的两个目标的来源不同，例如视频和文本的对齐）序列对齐的问题。 Introduction序列对齐主要包含三种类型：一对一，一对多，非单调。 传统的序列对齐方法包括两个阶段：1）学习两个句子的相似性度量；2）找到最优的对齐路径。例如DTW，CTW。 基于DTW的方法属于马尔科夫假设，只考虑了局部的上下文信息，然而有利于对齐的上下文信息可能分散在整个序列，例如一些叙述性的电影。 文中采用的是视频和文本对齐的数据，尤其是包含一些叙述性的内容，例如电影。选择叙述性的内容原因在于，由于事件之间存在大量的因果和时间相互作用，是计算理解中最具挑战性的。 Contributions 1）论文提出了一种端到端的循环框架，用于异源端个序列对齐问题。不像之前的方法，我们在决策时考虑了更多的上下文信息；2）标注了一个新的数据集 ，包含了电影摘要视频。 Approach任务：给定两个序列，视频序列和文本序列。视频序列包含了一系列连续的镜头（video clips），记为$\mathcal{V}=_{i=1,2…,N}$ 。文本序列包含了一系列连续的句子，记为${\mathcal{S}}=_{i,2,…,M}$ 。任务是找到一个函数$\pi$将视频段的下标映射到相应的句子：$\langle V_i,S_i \rangle$ 。 由于需要学习相似性度量的上下文信息分散在整个序列上，所以在决策时需要考虑过去和未来的信息。 Architecture整个模型由四个LSTM组成，包含了输入视频序列（Video Stack），输入文本序列（Text Stack），先前对齐动作（Action Stack），先前对齐匹配（Match Stack）。 这里的stack不是堆叠的意思，而是数据结构中的stack，先入先出。这也是本文的一个亮点。 Language and Visual Encoders先对每个镜头（video clips）和每个句子编码，然后在通过可选择的预训练，将编码后对的镜头和句子嵌入到同一个空间。通过预训练可以得到很好的初始化。 Video Encoder 利用VGG-16训练镜头的每一帧，将第一层全连接层的特征提取出来，为4096维。对所有帧的特征进行mean pooling，作为每个镜头的特征。镜头特征在经过三层全连接层，最后的到video的编码信息$v_i$，表示第i个镜头（clip）的编码信息。 Sentence Encoder 对每个词使用GloVe嵌入，在经过两层LSTM后，得到最后一层隐藏层的特征$h_t$，在经过三层全连接层得到每个句子的编码信息$s_i$。 Encoding Alignment and Pre-training 文中采用了一种可选择的预训练，可以产生一个好的初始化。这里的初始化使用了order-embedding ，对于每一对ground-truth $(V_i,S_i)$，采用一种非对称的相似度度量：$$F(v_i,s_i)=-||max(0,v_i,s_i)||^2$$相似度函数最大值为0。为每对ground-truth随机采样一些对比的clip $V’$和句子$S’$ 。最小化损失函数使得groud-truth的相似度为0，而对比样本的相似度低于一个间隔$\alpha$ 。损失函数为 The NeuMATCH Alignment NetworkLSTM Stacks Video Stack 对于每一时刻$t$，video stack包含了还没处理的序列$V_t,V_{t+1},…,V_N$ 。LSTM的方向是从$V_N$到$V_t$，允许信息从未来的clip流到当前的clip，将这个LSTM作为video stack，其隐藏层特征为$h_t^V$。 sentence stack 处理方法和video stack一样， 对于每一时刻$t$，sentence stack包含了还没处理的序列$S_t,S_{t+1},…,S_N$，其隐藏层特征为$h_t^S$。 action stack action stack负责储存过去所有的对齐动作，动作极为$A_{t-1},…,A_1$，每个动作为one-hot编码。动作的信息流不同于video stack和sentence stack，信息是从第一个动作流向最后一个动作，其隐藏层状态记为$h_{t-1}^A$。 文中定义了五种基本的对齐动作，它们一起处理两个序列对齐的问题，包含了不匹配（例如，一个clip没有句子和它匹配，记为null）以及一对多匹配（一个句子和多个clip匹配）。 五个对齐动作分别为：Pop Clip (PC),Pop Sentence (PS), Match (M), Match-Retain Clip (MRC), and Match-Retain Sentence (MRS)。下面是一个操作例子。 需要注意的是，并不是这五个动作都需要一起使用，具体问题具体分析，例如一对一的对齐，每个句子和某个clip匹配，允许某个clip和没有句子匹配，则只需要Pop Clip以及Match；一对多的对齐，允许每个句子和多个clip匹配，允许某个clip和没有句子匹配，每个句子至少和一个clip匹配，则只需要Pop Clip, Pop Sentence, and Match- Retain Sentence。 matched stack match stack包含了先前已经匹配的clip和sentence，其中最后匹配的置于stack的顶部。本文考虑一个句子可以匹配多个clip。因为匹配的clip在内容上是相似的，所以一个句子匹配多个clip的，取它们的均值，即$v_i=\sum_j^Kv_j/K$。则LSTM的输入为sentence和clip的拼接，$r_i=[s_i,v_I]$ 。最后一个隐藏层状态为$h_{t-1}^M$。 Alignment Action Prediction 每一时刻$t$，四个stack的状态为$\Psi_t=(V_{t^+},S_{t^+},A_{(t-1)^-},R_{1^+})$ 。则第$t$时刻$A_t$的条件概率为$$P(A_t|\Psi_t)=P(A_t|V_{t^+},S_{t^+},A_{(t-1)^-},R_{1^+})$$上面的计算方式为$\psi_t$经过两层全连接层然后在softmax。 根据链式法则，$$P(A_1,…,A_N|\mathcal{V},\mathcal{S})=\prod_{t=1}^NP(A_t|A_{(t-1)^-},\Psi_t)$$将交叉熵作为损失函数。 Experimental Evaluationdataset HM-1为在序列中随机插入一些不同电影的片段，但是具有相似的情节，HM-2随机删除一些句子，YMS是论文提出的new dataset，数来源于youtube。 baselines Minimum Distance (MD), Dynamic Time Warping (DTW) Canonical Time Warping (CTW) results 一对一 一对多]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>CVPR</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>sequence alignment</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[NIPS 2017]Learning Hierarchical Information Flow with Recurrent Neural Modules]]></title>
+    <url>%2F2018%2F06%2F10%2FNIPS-2017-Learning-Hierarchical-Information-Flow-with-Recurrent-Neural-Modules%2F</url>
+    <content type="text"><![CDATA[论文受到新脑皮质（neocortical）通信方式的启发，提出了ThalNet。新脑皮质通信方式有两种，一种是直连，另一种是通过丘脑（thalamus）。论文受到第二种通信方式的启发，构建多个循环神经模块，将所有模块的特征发送到一个路由中心，使得模块在多个时间步能够共享特征。模型展示了模块对输入数据的链式处理，学习了层次化的路由信息，并且模型包含了前馈神经网络、跳跃连接、反馈连接等结构。 模型结构 论文构建的模型包括四个模块，模块$f^1$接受input， $f^2$，$f^3$为侧模块，$f^4$负责输出，每个模块$f$可以是全连接层、GRU、LSTM等。对于每一时刻t，每个模块将其特征$\phi_t$发给路由中心 $\Phi$，其中每个模块特征由上下文$c_t$和一个可以选择的输入 $x_t$决定。对于下一时刻的上下文 $c_{t+1}$，每个模块通过阅读机制（read mechanism）选择性地读取路由中心$\Phi$的特征。对于每个模块的特征计算，上下文计算，路由中心，模型输出式子见下图。 阅读机制包括两种：静态阅读，动态阅读。静态阅读只取决于 $\Phi$，即$r^i(\Phi)$，而动态阅读不仅取决于 $\Phi$，还取决于当前模块的特征，即 $r^i(\Phi,\phi^i)$。 文中给出了四种阅读方法，其中weight normalization、Fast softmax比较稳定，效果比较好。 实验论文在三个任务上做了实验， Sequential Permuted MNIST、Sequential CIFAR-10、Text8 Language Modeling。其中前两个是图像的延迟预测，即将图像的像素每一行看作一个时刻，在输入最后一个时刻时预测出图像的类别，第三个任务是输入每个character，预测下一个character。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>NIPS</category>
+        <category>2017</category>
+      </categories>
+      <tags>
+        <tag>hierarchical</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[ICLR 2018]Hierarchical Representations for Efficient Architecture Search]]></title>
+    <url>%2F2018%2F06%2F10%2FICLR-2018-Hierarchical-Representations-for-Efficient-Architecture-Search%2F</url>
+    <content type="text"><![CDATA[论文结合了一种新型层次化遗传表示体系（hierarchical genetic representation scheme），可以模仿人类专家常用的模块化设计模式，支持复杂的拓扑结构。分别在CIFAR-10和ImageNet上获得了top-1错误率为3.6%和20.3%。 在这项工作中，作者通过强加一个层次化的网络来限制搜索空间结构，允许每层是一些灵活的网络拓扑结构（有向无环图）。底层是一些基本操作，例如卷积，池化等，更高层的计算图，或者modif，是由低层modif作为它们的构建块来组成，最高层的modif通过堆叠形成最终的网络结构。如下图所示。 作者通过进化搜索或者随机搜索来发现层次化结构。基于遗传算法，作者定义了一些变异（mutation），每次选择某一层的某个motif的某条边发生变异，这可以使得modif的结构发生改变（删除，添加，修改），将验证集的准确率作为fitness。 在实验中，提出的搜索框架只学习cell的结构，而不是整个模型。原因是这样能够快速计算fitness，然后可以将对应的genotype转移到大的模型，也就是用更少的cell计算fitness，更多的cell评估模型。下图是使用框架搜索优化过的cell构建的图像分类模型。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>ICLR</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>hierarchical</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[IJCAI 2018]A Hierarchical End-to-End Model for Jointly Improving Text Summarization and Sentiment Classification]]></title>
+    <url>%2F2018%2F06%2F10%2FIJCAI-2018-A-Hierarchical-End-to-End-Model-for-Jointly-Improving-Text-Summarization-and-Sentiment-Classification%2F</url>
+    <content type="text"><![CDATA[论文提出了一种层次化端到端模型，整合了文本摘要生成和情感分类任务 。 模型借鉴来源：Hierarchical Attention Networks for Document Classification 任务给定样本$(x^i,y^i,l^i)$，包含了文本，摘要，情感标签，同时进行摘要生成和情感分类。其中$L_i$为文本的单词数， $M_i$为摘要的单词数。 模型结构模型包括三部分：text encoder，summary decoder，sentiment classifier text encoder 使用双向LSTM作为encoder，产生上下文信息$h={h_1,h_2,…,h_L}$ summary decoderSummary decoder包括三部分：单向LSTM，multi-view attention，word generator 利用单向LSTM产生decoder的隐藏层输出$s_t$ 利用multi-view attention生成摘要向量$\mathbf{v}^{(c)}$和情感向量$\mathbf{v}^{(t)}$，multi-view attention其实就是两个独立的global attention。摘要向量$\mathbf{v}^{(c)}$生成如下： 根据摘要向量 $\mathbf{v}^{(c)}$，利用生成摘要中的每个词。 sentiment classifier 将所有时间步的情感向量 $\mathbf{v}^{(t)}$收集起来 为了获得原文本的上下文信息，使用highway机制，将上下文信息h作为分类器输入的一部分，r为情感分类的输入向量 实验作者在亚马逊在线评论数据集上做了实验，在和其他模型的对比上均获得了最好的结果。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>IJCAI</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>encoder decoder</tag>
+        <tag>text summarization</tag>
+        <tag>sentiment classification</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[NAACL 2016]Hierarchical Attention Networks for Document Classification]]></title>
+    <url>%2F2018%2F06%2F10%2FNAACL-2016-Hierarchical-Attention-Networks-for-Document-Classification%2F</url>
+    <content type="text"><![CDATA[论文提出了一种层次化的注意力网络用于文本分类，模型有两个特点：1）它有一个层次化的结构，反映了文本的层次化结构（由词组成句；由句组成文本）；2）它有两个level的注意力机制，分别是word-level和sentence-level。 模型结构模型由四部分组成：word encoder，word attention，sentence encoder，sentence attention word encoder 对每个词进行word embedding，在通过双向GRU提取隐藏层状态，将两个方向的隐藏层状态拼接， $w_{it}$为文本第i个句子的第t个词 。 word attention 对每个句子的所有词做attention，然后计算每个句子向量$s_i$： sentence encoder 和word encoder方式一样，利用双向GRU提取每个句子向量$s_i$的信息，然后将两个方向的隐藏层状态拼接 sentence attention和word attention方式一样，对文本的每个句子做attention，然后计算文本向量v，将v用softmax分类。 实验作者在6个大规模文本分类数据集上做了实验，和众多SVM，CNN，LSTM比较均获得了最好的结果。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>NAACL</category>
+        <category>2016</category>
+      </categories>
+      <tags>
+        <tag>attention</tag>
+        <tag>hierarchical</tag>
+        <tag>encoder decoder</tag>
+        <tag>document classification</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[arxiv 2018]Hierarchical Attention-Based Recurrent Highway Networks for Time Series Prediction]]></title>
+    <url>%2F2018%2F06%2F09%2Farxiv-2018-Hierarchical-Attention-Based-Recurrent-Highway-Networks-for-Time-Series-Prediction%2F</url>
+    <content type="text"><![CDATA[论文提出了一种可以端到端学习的深度学习模型，Hierarchical Attention-Based Recurrent Highway Networks(HARNN)，可以将外部序列的时空特征提取和目标序列的时空动态建模结合到一个简单的框架。 论文模型借鉴来源：A Dual-Stage Attention-Based Recurrent Neural Network for Time Series Prediction 模型贡献 利用卷积网络学习外部输入（x）中变量之间的空间特征。接着利用RHN（recurrent highway network）在不同层构建不同的语义，建模时序动态。 提出层次化注意力机制。 在获得高准确率的同时，可以捕获时间序列中的突然振荡或者变动。 任务时间序列预测，给定1~T-1时刻的目标序列以及1~T-1时刻的外部序列，预测T时刻的目标值。 模型结构encoder和decoder均使用多层RHN，在encoder使用卷积网络提取外部序列的时空特征，在decoder使用层次化注意力机制对时序依赖动态建模。 encoder 将外部输入$(\mathbf{x_1,x_2,…,x_{T-1}})$通过几层卷积、池化操作后输给一个全连接层，得到一个特征向量 $(\mathbf{w_1,w_2,…,w_{T-1}})$ 利用RHN对encoder-1中的特征向量进行时序动态建模。$\mathbf{h}_t^{[k]}$表示第k层第t时刻的隐藏层状态 decoder 多层注意力机制：在t时刻，对encoder每一层的1~T-1时刻的隐藏层状态做attention。其中$\mathbf{s_{t-1}}=\mathbf{s}_{t-1}^{[k]}$ ，t-1时刻decoder第k层隐藏层状态。 则第k层第t时刻的子上下文$\mathbf{d}_t^{[k]}$为 将t时刻所有层的子上下文拼接，得到t时刻的上下文$\mathbf{d}_t$： 更新decoder输入$\mathbf{y}_t$为$\mathbf{\tilde{y}_t}$： 解码器RHN第k层隐藏层状态$\mathbf{s}_{t}^{[k]}$： 第T时刻预测值$\mathbf{\hat{y}_T}$： 实验作者在三个数据集上和ARIMA，LSTM，GRU，DA-RNN模型比较，均获得最好的结果。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>arxiv</category>
+        <category>2018</category>
+      </categories>
+      <tags>
+        <tag>attention</tag>
+        <tag>hierarchical</tag>
+        <tag>encoder decoder</tag>
+        <tag>time series prediction</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[IJCAI 2017]A Dual-Stage Attention-Based Recurrent Neural Network for Time Series Prediction]]></title>
+    <url>%2F2018%2F06%2F09%2FIJCAI-2017-A-Dual-Stage-Attention-Based-Recurrent-Neural-Network-for-Time-Series-Prediction%2F</url>
+    <content type="text"><![CDATA[论文提出了基于注意力机制的两阶段循环神经网络（DA-RNN），在第一阶段（encoder），引入input attention mechanism对每一时刻的外部输入自适应性地提取相关性；在第二阶段（decoder），引入temporal attention mechanism捕获encoder的长期时序依赖信息。 任务时间序列预测，给定1~T-1时刻的目标序列以及1~T-1时刻的外部序列，预测T时刻的目标值。 模型结构 encoder 使用LSTM作为encoder和decoder，其中状态更新如下 ： 引入input attention mechanism：对每一时刻$\mathbf{X_t}$的n维变量使用attention 使用$\alpha_t^k$对$\mathbf{X_t}$加权求和，更新$\mathbf{X_t}$： 使用$\tilde{X_t}$更新1中的状态方程： decoder 引入temporal attention mechanism：在decoder的第t时刻，对encoder所有隐藏层状态做attention 计算t时刻的上下文向量$\mathbf{c_t}$： 利用$\mathbf{c_t}$更新目标序列的输入值$\mathbf{y_{t-1}}$为$\mathbf{\tilde{y}_{t-1}}$： 更新第t时刻decoder的隐藏层状态$\mathbf{d_t}$： 其中$f_2$的更新状态方程如encoder-1： 则第t时刻的预测值$\mathbf{\hat{T}_t}$为： 实验作者在两个数据集上和ARIMA，NARX RNN，Encoder-Decoder，Attention RNN模型进行了比较，均获得了最好的结果。]]></content>
+      <categories>
+        <category>paper notes</category>
+        <category>IJCAI</category>
+        <category>2017</category>
+      </categories>
+      <tags>
+        <tag>attention</tag>
+        <tag>hierarchical</tag>
+        <tag>encoder decoder</tag>
+        <tag>time series prediction</tag>
+      </tags>
+  </entry>
+</search>
